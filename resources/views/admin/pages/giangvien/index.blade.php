@@ -13,18 +13,22 @@
                 @endif
                 <div class="card mb-4" style="min-height: 680px;">
                     <div class="card-header pb-0">
-                        <h6>Tài khoản chưa kích hoạt</h6>
+                        <h6>Giảng viên</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Mã giảng viên</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Họ tên</th>
+
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Vai trò</th>
+                                            Chuyên ngành</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Số điện thoại</th>
@@ -41,40 +45,49 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
-                                        @if($user->trang_thai == 0)
+                                    @foreach ($giangviens as $giangvien)
+                                        @if($giangvien->nguoidung->trang_thai == 1)
                                             <tr>
                                                 <td>
-                                                    <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex px-3 py-1 align-content-center">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{$user->ho_ten}}</h6>
-                                                            <p class="text-xs text-secondary mb-0">{{$user->email}}</p>
+                                                            <h6 class="mb-0 text-sm">{{$giangvien->ma_giang_vien}}</h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <span class="badge badge-sm bg-gradient-warning">{{$user->vaitro->name}}</span>
+                                                    <div class="d-flex px-0 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">{{$giangvien->nguoidung->ho_ten}}</h6>
+                                                            <p class="text-xs text-secondary mb-0">{{$giangvien->nguoidung->email}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <p class="text-xs font-weight-bold mb-0">{{$user->so_dien_thoai}}</p>
+                                                    <h6 class="mb-0 text-sm">{{$giangvien->chuyen_nganh}}</h6>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{$giangvien->nguoidung->so_dien_thoai}}
+                                                    </p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-danger">Chưa kích hoạt</span>
+                                                    <span class="badge badge-sm bg-gradient-faded-primary">Kích hoạt</span>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span
-                                                        class="text-secondary text-xs font-weight-bold">{{ $user->created_at->format('Y-m-d') }}
+                                                        class="text-secondary text-xs font-weight-bold">{{ $giangvien->nguoidung->created_at->format('Y-m-d') }}
                                                     </span>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="{{route("admin.user.edit", $user->id)}}"
+                                                    <a href="{{route("admin.user.edit", $giangvien->nguoidung->id)}}"
                                                         class="text-secondary font-weight-bold">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
-                                                    <form action="{{route('admin.user.destroy', $user->id)}}" method="post"
-                                                        class="d-inline">
+                                                    <form action="{{route('admin.giangvien.destroy', $giangvien->nguoidung->id)}}"
+                                                        method="post" class="d-inline">
                                                         @csrf
-                                                        @method('DELETE')
                                                         <button onclick="return confirm('Chắc chắn xóa')" type="submit"
                                                             class="border-0 bg-transparent">
                                                             <i class="fa-solid fa-trash-can"></i>
@@ -91,7 +104,7 @@
                         </div>
                     </div>
                     <div>
-                        {{$users->links()}}
+                        {{-- {{$giangviens->links()}} --}}
                     </div>
                 </div>
             </div>

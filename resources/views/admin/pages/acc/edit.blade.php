@@ -19,8 +19,8 @@
                         <div class="card">
                             <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
-                                    <a href="{{route("admin.user.index")}}">
-                                        <p class="mb-0"><i class="fa-solid fa-chevron-left"></i> Kích hoạt tài khoản</p>
+                                    <a href="{{route("admin.$title.index")}}">
+                                        <p class="mb-0"><i class="fa-solid fa-chevron-left"></i>Tài khoản</p>
                                     </a>
 
                                     <button type="submit" class="btn btn-primary btn-sm ms-auto">Cập nhật</button>
@@ -82,7 +82,9 @@
                                                     {{ucfirst($uesr->vaitro->name)}}
                                                 </option>
                                                 @foreach ($roles as $role)
-                                                    <option value="{{$role->id}}">{{ucfirst($role->name)}}</option>
+                                                    @if ($role->id == 3 || $role->id == 4)
+                                                        <option disabled value="{{$role->id}}">{{ucfirst($role->name)}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>

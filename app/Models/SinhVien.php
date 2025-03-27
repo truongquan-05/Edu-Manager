@@ -13,4 +13,7 @@ class SinhVien extends Model
         'chuyen_nganh',
         'nguoi_dung_id'
     ];
+    public function nguoidung(){
+        return $this->belongsTo(NguoiDung::class,'nguoi_dung_id','id');
+    }
 }

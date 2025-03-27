@@ -75,9 +75,10 @@ class NguoiDungController extends Controller
     {
         $uesr = NguoiDung::find($id);
         $roles = VaiTro::all();
+        $title = 'user';
         return view(
             "admin.pages.acc.edit",
-            compact('uesr', 'roles')
+            compact('uesr', 'roles','title')
         );
     }
 
@@ -108,12 +109,5 @@ class NguoiDungController extends Controller
         $uesr->delete();
         return redirect()->route('admin.user.index')->with('message','Thành công');
     }
-    public function testData()
-    {
-
-        $users = NguoiDung::with('vaitro')
-            ->orderBy('id', 'DESC')
-            ->get();
-        return $users;
-    }
+ 
 }
