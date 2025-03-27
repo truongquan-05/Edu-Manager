@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\NguoiDungController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GiangVienController;
+use App\Http\Controllers\Admin\NguoiDungController;
+
 
 Route::get('/', function () {
     return "Dang nhap";
@@ -11,7 +13,8 @@ Route::get('/', function () {
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
     Route::resource('/user', NguoiDungController::class);
-    
+    Route::get('/giangvien', [GiangVienController::class, 'index'])->name('giangvien.index');
+
     
 });
 
