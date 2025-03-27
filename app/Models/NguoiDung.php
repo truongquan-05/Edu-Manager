@@ -27,12 +27,4 @@ class NguoiDung extends Model
 }
 
 
-class SinhVien extends Model
-{
-    use HasFactory;
-    protected $fillable = [
-        'ma_sinh_vien',
-        'chuyen_nganh',
-        'nguoi_dung_id'
-    ];
-}
+
