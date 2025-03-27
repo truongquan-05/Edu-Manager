@@ -26,22 +26,5 @@ class NguoiDung extends Model
     }
 }
 
-class GiangVien extends Model
-{
-    use HasFactory;
-    protected $fillable = [
-        'ma_giang_vien',
-        'chuyen_nganh',
-        'nguoi_dung_id'
-    ];
-}
 
-class SinhVien extends Model
-{
-    use HasFactory;
-    protected $fillable = [
-        'ma_sinh_vien',
-        'chuyen_nganh',
-        'nguoi_dung_id'
-    ];
-}
+
