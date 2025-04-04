@@ -62,8 +62,8 @@
                                                     <span class="badge badge-sm bg-gradient-danger">Chưa kích hoạt</span>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <span class="text-secondary text-xs font-weight-bold">
-                                                        {{ $user->created_at ? $user->created_at->format('Y-m-d') : 'N/A' }}
+                                                    <span
+                                                        class="text-secondary text-xs font-weight-bold">{{ $user->created_at->format('Y-m-d') }}
                                                     </span>
                                                 </td>
                                                 <td class="align-middle">

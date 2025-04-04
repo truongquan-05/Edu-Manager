@@ -18,7 +18,8 @@ class NguoiDung extends Model
         'ngay_sinh',
         'dia_chi',
         'trang_thai',
-        'vai_tro_id'
+        'vai_tro_id',
+        'mat_khau'
     ];
     public function vaitro()
     {
@@ -26,15 +27,6 @@ class NguoiDung extends Model
     }
 }
 
-class GiangVien extends Model
-{
-    use HasFactory;
-    protected $fillable = [
-        'ma_giang_vien',
-        'chuyen_nganh',
-        'nguoi_dung_id'
-    ];
-}
 
 class SinhVien extends Model
 {

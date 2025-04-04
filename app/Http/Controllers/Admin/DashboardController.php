@@ -1,17 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("admin.pages.dashboard");
+        // Kiểm tra nếu người dùng chưa đăng nhập
+        if (!$request->session()->has('nguoi_dung')) {
+            return redirect()->route('login'); // Chuyển hướng về trang đăng nhập
+        }
+
+        // Nếu đã đăng nhập, hiển thị dashboard
+        return view("admin.pages.dashboard", [
+            'nguoi_dung' => $request->session()->get('nguoi_dung') // Truyền thông tin người dùng vào view
+        ]);
     }
 
     /**

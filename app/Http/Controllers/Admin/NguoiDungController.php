@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\GiangVien;
 use App\Models\NguoiDung;
 use App\Models\SinhVien;
 use App\Models\VaiTro;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class NguoiDungController extends Controller
 {
