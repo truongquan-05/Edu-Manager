@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\VaiTro;
-use App\Models\GiangVien;
-
+use App\Models\SinhVien;
 use App\Models\NguoiDung;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
-class GiangVienController extends Controller
+class SinhVienController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $giangviens = GiangVien::with('nguoidung')->get();
+         $sinhviens = SinhVien::with('nguoidung')->get();
         return view(
-            'admin.pages.giangvien.index',
-            compact('giangviens')
+            'admin.pages.sinhvien',
+            compact('sinhviens')
         );
     }
 
@@ -71,7 +68,7 @@ class GiangVienController extends Controller
     {
         $uesr = NguoiDung::find($id);
         $uesr->delete();
-        return redirect()->route('admin.giangvien.index')->with('message','Thành công');
+        return redirect()->route('admin.sinhvien.index')->with('message','Thành công');
     
     }
 }

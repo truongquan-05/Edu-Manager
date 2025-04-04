@@ -16,7 +16,9 @@ class NguoiDungController extends Controller
      */
     public function index()
     {
-        $users = NguoiDung::with('vaitro')->where('trang_thai', '0')->orderBy('id', 'DESC')->paginate(8);
+        $users = NguoiDung::with('vaitro')->where('trang_thai', '0')
+        ->orWhere('vai_tro_id','2')
+        ->orderBy('id', 'DESC')->paginate(8);
         return view(
             "admin.pages.acc.index",
             compact('users')
@@ -75,9 +77,10 @@ class NguoiDungController extends Controller
     {
         $uesr = NguoiDung::find($id);
         $roles = VaiTro::all();
+        $title = 'user';
         return view(
             "admin.pages.acc.edit",
-            compact('uesr', 'roles')
+            compact('uesr', 'roles','title')
         );
     }
 
@@ -108,12 +111,5 @@ class NguoiDungController extends Controller
         $uesr->delete();
         return redirect()->route('admin.user.index')->with('message','Thành công');
     }
-    public function testData()
-    {
-
-        $users = NguoiDung::with('vaitro')
-            ->orderBy('id', 'DESC')
-            ->get();
-        return $users;
-    }
+ 
 }

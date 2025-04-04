@@ -1,9 +1,9 @@
 @extends('admin.layout.main')
 @section('content')
-    <div class="main-content position-relative max-height-vh-100 h-100">
+    <div class="main-content position-relative">
 
         <div class="container-fluid py-4">
-            <div class="row">
+            <div class="row" style="max-height: 680px;">
                 @if(session('message'))
                     <div class="col-md-12">
                         <div class="col-md-12 alert alert-info" role="alert">
@@ -52,6 +52,12 @@
                                             <input class="form-control" type="date" name="ngay_sinh" required>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Mật khẩu</label>
+                                            <input class="form-control" type="password" name="mat_khau" required>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -97,9 +103,7 @@
                         </div>
                     </div>
                 </form>
-
             </div>
-
         </div>
     </div>
 
@@ -109,21 +113,6 @@
 <style>
     .create:hover {
         color: blue;
-    }
-
-    input {
-        border: 2px solid gray;
-        outline: none;
-    }
-
-    /* Viền đỏ khi input trống sau khi bấm "Gửi" */
-    .error {
-        border: 2px solid red !important;
-    }
-
-    /* Viền xanh khi nhập đúng */
-    .valid {
-        border: 2px solid green !important;
     }
 </style>
 <script>
@@ -139,5 +128,5 @@
         }
     }
 
- 
+
 </script>

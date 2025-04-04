@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\NguoiDung;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class GiangVien extends Model
 {
@@ -13,4 +14,7 @@ class GiangVien extends Model
         'chuyen_nganh',
         'nguoi_dung_id'
     ];
+    public function nguoidung(){
+        return $this->belongsTo(NguoiDung::class,'nguoi_dung_id','id');
+    }
 }

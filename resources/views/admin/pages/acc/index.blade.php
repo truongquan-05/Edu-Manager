@@ -42,53 +42,66 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
-                                        @if($user->trang_thai == 0)
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{$user->ho_ten}}</h6>
-                                                            <p class="text-xs text-secondary mb-0">{{$user->email}}</p>
-                                                        </div>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{$user->ho_ten}}</h6>
+                                                        <p class="text-xs text-secondary mb-0">{{$user->email}}</p>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <span class="badge badge-sm bg-gradient-warning">{{$user->vaitro->name}}</span>
-                                                </td>
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0">{{$user->so_dien_thoai}}</p>
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-danger">Chưa kích hoạt</span>
-                                                </td>
-                                                <td class="align-middle text-center">
-                                                    <span class="text-secondary text-xs font-weight-bold">
-                                                        {{ $user->created_at ? $user->created_at->format('Y-m-d') : 'N/A' }}
+
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-sm bg-gradient-warning">{{$user->vaitro->name}}</span>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{$user->so_dien_thoai}}</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                @if ($user->trang_thai == 0)
+                                                    <span class="badge badge-sm bg-gradient-danger">
+                                                        Chưa kích hoạt
+
                                                     </span>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <a href="{{route("admin.user.edit", $user->id)}}"
-                                                        class="text-secondary font-weight-bold">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                    <form action="{{route('admin.user.destroy', $user->id)}}" method="post"
-                                                        class="d-inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button onclick="return confirm('Chắc chắn xóa')" type="submit"
-                                                            class="border-0 bg-transparent">
-                                                            <i class="fa-solid fa-trash-can"></i>
-                                                        </button>
+                                                @else
+                                                    <span class="badge badge-sm bg-gradient-danger">
+                                                        Kích hoạt
+                                                    </span>
+                                                @endif
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ $user->created_at ? $user->created_at->format('Y-m-d') : 'NULL' }}
+                                                </span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="{{route("admin.user.edit", $user->id)}}"
+                                                    class="text-secondary font-weight-bold">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </a>
+                                                <form action="{{route('admin.user.destroy', $user->id)}}" method="post"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button onclick="return confirm('Chắc chắn xóa')" type="submit"
+                                                        class="border-0 bg-transparent">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </button>
 
 
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endif
+                                                </form>
+                                            </td>
+                                        </tr>
+
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+
+
+
                     </div>
                     <div>
                         {{$users->links()}}

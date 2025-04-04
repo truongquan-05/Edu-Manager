@@ -19,8 +19,8 @@
                         <div class="card">
                             <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
-                                    <a href="{{route("admin.user.index")}}">
-                                        <p class="mb-0"><i class="fa-solid fa-chevron-left"></i> Kích hoạt tài khoản</p>
+                                    <a href="{{route("admin.$title.index")}}">
+                                        <p class="mb-0"><i class="fa-solid fa-chevron-left"></i>Tài khoản</p>
                                     </a>
 
                                     <button type="submit" class="btn btn-primary btn-sm ms-auto">Cập nhật</button>
@@ -55,6 +55,13 @@
                                                 name="ngay_sinh">
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Mật khẩu</label>
+                                            <input class="form-control" type="password" name="mat_khau" required
+                                                value="{{$uesr->mat_khau}}">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -82,7 +89,13 @@
                                                     {{ucfirst($uesr->vaitro->name)}}
                                                 </option>
                                                 @foreach ($roles as $role)
-                                                    <option value="{{$role->id}}">{{ucfirst($role->name)}}</option>
+                                                    @if ($uesr->vai_tro_id == 3 || $uesr->vai_tro_id == 4)
+                                                        <option disabled value="{{$role->id}}">{{ucfirst($role->name)}}</option>
+                                                    @else
+                                                        <option value="{{$role->id}}">{{ucfirst($role->name)}}</option>
+
+                                                    @endif
+
                                                 @endforeach
                                             </select>
                                         </div>
