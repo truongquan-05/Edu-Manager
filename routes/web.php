@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\SinhVienController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\LopHocController;
+use App\Http\Controllers\Admin\SignInController;
+use App\Http\Controllers\Admin\SinhVienController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GiangVienController;
 use App\Http\Controllers\Admin\NguoiDungController;
-use App\Http\Controllers\Admin\SignInController;
 
 
 
@@ -19,13 +20,16 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::post('/giangvien/{id}/delete', [GiangVienController::class, 'destroy'])->name('giangvien.destroy');
     Route::get('/sinhvien', [SinhVienController::class, 'index'])->name('sinhvien.index');
     Route::post('/sinhvien/{id}/delete', [SinhVienController::class, 'destroy'])->name('sinhvien.destroy');
-
+    Route::resource('/lophoc', LopHocController::class);
+    Route::delete('/lophoc/{id}/delete', [LopHocController::class, 'destroy'])->name('lophoc.destroy'); // Sửa ở đây
 });
+
 
 
 Route::get('/', [SignInController::class, 'index'])->name('login');
 Route::post('/login', [SignInController::class, 'login'])->name('login.post');
 Route::post('/logout', [SignInController::class, 'logout'])->name('logout');
+
 
 
 
