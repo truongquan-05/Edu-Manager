@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("ma_lop_hoc",50);
             $table->integer("so_luong");
             $table->string("phong_hoc",10);
+            $table->string("chuyen_nganh",50);
             $table->foreignId("giang_vien_id")->constrained();
             $table->foreignId("mon_hoc_id")->constrained();
             $table->enum('ca_hoc',[1,2,3,4]);

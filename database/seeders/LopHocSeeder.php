@@ -12,6 +12,6 @@ class LopHocSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
     }
 }

@@ -21,9 +21,13 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/sinhvien', [SinhVienController::class, 'index'])->name('sinhvien.index');
     Route::post('/sinhvien/{id}/delete', [SinhVienController::class, 'destroy'])->name('sinhvien.destroy');
     Route::resource('/lophoc', LopHocController::class);
+
     Route::get('/profile', function(){
         return view('admin.pages.profile');
     })->name('profile');
+
+    // Route::delete('/lophoc/{id}/delete', [LopHocController::class, 'destroy'])->name('lophoc.destroy'); // Sửa ở đây
+
 });
 
 
