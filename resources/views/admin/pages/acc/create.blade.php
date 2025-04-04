@@ -52,6 +52,12 @@
                                             <input class="form-control" type="date" name="ngay_sinh" required>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Mật khẩu</label>
+                                            <input class="form-control" type="password" name="mat_khau" required>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">

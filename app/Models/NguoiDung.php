@@ -18,7 +18,8 @@ class NguoiDung extends Model
         'ngay_sinh',
         'dia_chi',
         'trang_thai',
-        'vai_tro_id'
+        'vai_tro_id',
+        'mat_khau'
     ];
     public function vaitro()
     {

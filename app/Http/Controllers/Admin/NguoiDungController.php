@@ -16,7 +16,9 @@ class NguoiDungController extends Controller
      */
     public function index()
     {
-        $users = NguoiDung::with('vaitro')->where('trang_thai', '0')->orderBy('id', 'DESC')->paginate(8);
+        $users = NguoiDung::with('vaitro')->where('trang_thai', '0')
+        ->orWhere('vai_tro_id','2')
+        ->orderBy('id', 'DESC')->paginate(8);
         return view(
             "admin.pages.acc.index",
             compact('users')

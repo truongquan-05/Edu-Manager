@@ -20,6 +20,7 @@ return new class extends Migration
         Schema::create('nguoi_dungs', function (Blueprint $table) {
             $table->id();
             $table->string('ho_ten', 50);
+            $table->string('mat_khau', 50);
             $table->string('email', 50);
             $table->string('so_dien_thoai', 10);
             $table->enum('gioi_tinh', ['Nam', 'Nữ']);
