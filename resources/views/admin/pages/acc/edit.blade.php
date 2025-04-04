@@ -4,14 +4,7 @@
 
         <div class="container-fluid py-4">
             <div class="row">
-                @if(session('message'))
-                    <div class="col-md-12">
-                        <div class="col-md-12 alert alert-info" role="alert">
-                            <strong>{{ session('message') }}</strong>
-                        </div>
-                    </div>
-
-                @endif
+             
                 <form action="{{route("admin.user.update", $uesr->id)}}" method="POST">
                     @csrf
                     @method('PUT')

@@ -50,6 +50,7 @@
                                                         <h6 class="mb-0 text-sm">{{$user->ho_ten}}</h6>
                                                         <p class="text-xs text-secondary mb-0">{{$user->email}}</p>
                                                     </div>
+
                                                 </div>
                                             </td>
                                             <td>
@@ -71,7 +72,7 @@
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $user->created_at->format('Y-m-d') }}
+                                                    class="text-secondary text-xs font-weight-bold">{{ $user->created_at ? $user->created_at->format('Y-m-d') : 'NULL' }}
                                                 </span>
                                             </td>
                                             <td class="align-middle">
