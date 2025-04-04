@@ -8,6 +8,7 @@ use App\Models\NguoiDung;
 use App\Models\VaiTro;
 use Illuminate\Http\Request;
 
+
 class GiangVienController extends Controller
 {
     /**
